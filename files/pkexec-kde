@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# pkexec-kde — run a GUI app as root via pkexec with the user's KDE/Qt
+# theme, style (Qt6Curve), color scheme, icons, and window decorations.
+#
+# Usage:  pkexec-kde <command> [args...]
+# Example: pkexec-kde krusader
+#
+# How it works: pkexec strips all environment variables for security.
+# This wrapper passes through the display + KDE config/data dirs so the
+# root process picks up the same Qt6Curve style, color scheme, and window
+# decorations as your user session. Root can read your ~/.config (mode 700)
+# because root bypasses file permission checks.
+#
+# Auth: pkexec triggers the polkit-kde agent, which (via our /etc/pam.d/
+# polkit-1 override) offers fingerprint first, falling back to password.
+set -euo pipefail
+
+[ "$#" -gt 0 ] || { echo "usage: $0 <command> [args...]" >&2; exit 2; }
+
+# Resolve the calling user's config/data paths (not root's).
+USER_NAME="$(id -un)"
+USER_HOME="$(getent passwd "$USER_NAME" | cut -d: -f6)"
+USER_UID="$(id -u)"
+
+exec pkexec env \
+	DISPLAY="$DISPLAY" \
+	WAYLAND_DISPLAY="$WAYLAND_DISPLAY" \
+	XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+	XAUTHORITY="$XAUTHORITY" \
+	XDG_CONFIG_HOME="$USER_HOME/.config" \
+	XDG_CONFIG_DIRS="$USER_HOME/.config/kdedefaults:/etc/xdg:/usr/share/manjaro-kde-settings/xdg" \
+	XDG_DATA_DIRS="$XDG_DATA_DIRS" \
+	XDG_CURRENT_DESKTOP="KDE" \
+	QT_QPA_PLATFORMTHEME="kde" \
+	"$@"

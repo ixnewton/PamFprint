@@ -1,0 +1,12 @@
+#%PAM-1.0
+# Override of /usr/lib/pam.d/polkit-1: offer fingerprint first (sufficient),
+# fall back to password via system-auth. This affects ALL polkit prompts
+# (gparted, timeshift, udisks2 device unlocks, etc.) consistently with how sudo is
+# configured on this host. Reorder to put system-auth first if you prefer
+# password-first.
+auth       sufficient   pam_fprintd.so
+auth       include      system-auth
+
+account    include      system-auth
+password   include      system-auth
+session    include      system-auth
