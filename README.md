@@ -1,4 +1,4 @@
-# PamFprint — fingerprint authorization for privileged access (Arch / KDE Plasma)
+# PamFprint — fingerprint polkit authorization helper to ease privileged access where fprintd is installed (Arch / KDE Plasma)
 
 ## What this is
 
