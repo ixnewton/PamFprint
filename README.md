@@ -3,7 +3,7 @@
 ## What this is
 
 Canonical `/etc/pam.d` configuration plus an installer that keeps
-`pam_fprintd` wired into every privileged-access scenario on this machine:
+`pam_fprintd` wired into every privileged-access scenario whilst logged into the KDE plasma 6 desktop session:
 polkit prompts, `sudo`, `su`, console login, and the SDDM/LightDM display
 managers — with a themed `pkexec` wrapper for running KDE/Qt GUI apps as
 root.
