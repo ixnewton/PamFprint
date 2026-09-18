@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # pkexec-kde — run a GUI app as root via pkexec with the user's KDE/Qt
-# theme, style (Qt6Curve), color scheme, icons, and window decorations.
+# theme, style, color scheme, icons, and window decorations.
 #
 # Usage:  pkexec-kde <command> [args...]
 # Example: pkexec-kde krusader
