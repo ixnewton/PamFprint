@@ -6,7 +6,9 @@ Canonical `/etc/pam.d` configuration plus an installer that keeps
 `pam_fprintd` wired into every privileged-access scenario whilst logged into the KDE plasma 6 desktop session:
 polkit prompts, `sudo`, `su`, console login, and the SDDM/LightDM display
 managers — with a themed `pkexec` wrapper for running KDE/Qt GUI apps as
-root.
+root. 
+
+Be aware of the security implications of having fingerprint authentication enabled for all these scenarios. Only trusted applications should be run with this configuration. There may be issues on multi-user systems. 
 
 `files/pam.d/` holds the canonical copy of each fingerprint-enabled PAM
 file. The installer syncs them to `/etc/pam.d/`, backing up anything it
