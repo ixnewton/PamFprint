@@ -25,6 +25,14 @@ changes; the uninstaller restores the backups.
 | GUI apps as root (`pkexec-kde`) | via `polkit-1` | fingerprint first → password fallback |
 | Menu-launched root apps (krusader, ksystemlog, zenmap) | `.desktop` → `/usr/local/bin/<app>.sh` → `pkexec-kde` → `polkit-1` | fingerprint first → password fallback |
 
+> **Fingerprint banner color.** The pink banner in the polkit password
+> dialog is a `Kirigami.InlineMessage` rendered in the color scheme's
+> negative/error colors — its style is compiled into `polkit-kde-agent`
+> (the QML lives inside the binary), so it cannot be themed separately.
+> Changing `ForegroundNegative`/`BackgroundAlternate` values in the active
+> color scheme recolors the banner — but it also recolors every
+> error/negative element system-wide, not just this banner.
+
 ## Files
 
 | Source (`files/`)   | Target                                  |
