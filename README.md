@@ -63,7 +63,7 @@ repoint them again.
 `pkexec` strips all environment variables, so root-run Qt/KDE apps can't
 find your display or your theme config. The `pkexec-kde` wrapper passes
 through the display + KDE config/data dirs so the root process picks up
-your Qt6Curve style, color scheme, icons, and window decorations:
+your application style, color scheme, icons, and window decorations:
 
 ```bash
 pkexec-kde krusader           # file manager as root, with your theme

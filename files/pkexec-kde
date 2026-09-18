@@ -7,7 +7,7 @@
 #
 # How it works: pkexec strips all environment variables for security.
 # This wrapper passes through the display + KDE config/data dirs so the
-# root process picks up the same Qt6Curve style, color scheme, and window
+# root process picks up the same application style, color scheme, and window
 # decorations as your user session. Root can read your ~/.config (mode 700)
 # because root bypasses file permission checks.
 #
