@@ -37,7 +37,8 @@ changes; the uninstaller restores the backups.
 ## Install
 
 ```bash
-cd /home/www/KDE-trunk/PamFprint
+git clone https://github.com/ixnewton/PamFprint.git
+cd PamFprint
 sudo bash install.sh
 ```
 
